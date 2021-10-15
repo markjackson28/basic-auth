@@ -4,11 +4,11 @@ const express = require('express');
 const app = express();
 
 // Importing modules for use
-const mainRoute = require('./routes/mainRoute');
+const mainRoute = require('./auth/routes/mainRoute');
 const notFoundHandler = require('./error-handlers/404');
 const errorHandler = require('./error-handlers/500');
-const signUp = require('./routes/signup');
-const signIn = require('./routes/login');
+const signUp = require('./auth/routes/signup');
+const signIn = require('./auth/routes/login');
 
 // Global Middleware
 app.use(express.json());
