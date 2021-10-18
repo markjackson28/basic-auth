@@ -1,12 +1,11 @@
 'use strict';
 
-const express = require('express');
-const { User } = require('../models/index');
 const base64 = require('base-64');
 const bcrypt = require('bcrypt');
-const router = express.Router();
+const { User } = require('../models/index');
 
-router.post('/signin', async (req, res) => {
+let basicAuth = async (req, res, next) => {
+
   let basicHeaderParts = req.headers.authorization.split(' ');
   let encodedString = basicHeaderParts.pop();
   let decodedString = base64.decode(encodedString);
@@ -17,15 +16,12 @@ router.post('/signin', async (req, res) => {
     const valid = await bcrypt.compare(password, user.password);
     if (valid) {
       console.log('Cool Beans You made it BroChacho');
-      res.status(200).json(user);
-    }
-    else {
-      throw new Error('Invalid user');
+      req.body.user = user;
+      next();
     }
   } catch (e) {
-    res.status(403).send('Invalid Login');
-    console.log('error message', e);
+    res.status(403).send("Invalid Login");
   }
-});
+}
 
-module.exports = router;
+module.exports = basicAuth;

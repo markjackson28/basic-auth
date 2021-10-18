@@ -8,9 +8,10 @@ You have been supplied a “monolithic” express server in the starter-code fol
 
 ### Author: Mark Thanadabouth
 
-### Collaborators: Jeremy B, Lorenzo O.
+### Collaborators: Jeremy B, Lorenzo O., Ayrat G.
 
 #### Links and Resources
+[Deployed Link](https://mt-basic-auth-prod.herokuapp.com/)
 
 ### Setup
 
